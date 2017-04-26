@@ -1,0 +1,6 @@
+dependencies: \
+  /Users/nbenavi/Developer/CS348B/pbrt-v3/src/tests/gtest/gtest_main.cc \
+  /Users/nbenavi/Developer/CS348B/pbrt-v3/src/tests/gtest/gtest.h \
+  /Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/glog/glog/logging.h \
+  /Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/glog/src/glog/log_severity.h \
+  /Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/glog/glog/vlog_is_on.h

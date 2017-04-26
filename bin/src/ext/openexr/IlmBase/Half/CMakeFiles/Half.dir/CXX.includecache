@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/openexr/IlmBase/Half/half.cpp
+assert.h
+-
+half.h
+/Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/openexr/IlmBase/Half/half.h
+toFloat.h
+/Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/openexr/IlmBase/Half/toFloat.h
+eLut.h
+/Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/openexr/IlmBase/Half/eLut.h
+
+/Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/openexr/IlmBase/Half/half.h
+halfExport.h
+/Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/openexr/IlmBase/Half/halfExport.h
+iostream
+-
+
+/Users/nbenavi/Developer/CS348B/pbrt-v3/src/ext/openexr/IlmBase/Half/halfExport.h
+
+src/ext/openexr/IlmBase/Half/eLut.h
+
+src/ext/openexr/IlmBase/Half/toFloat.h
+

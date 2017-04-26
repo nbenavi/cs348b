@@ -1,0 +1,248 @@
+Determining if the include file syscall.h exists failed with the following output:
+Change Dir: /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8cab1/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_8cab1.dir/build.make CMakeFiles/cmTC_8cab1.dir/build
+Building C object CMakeFiles/cmTC_8cab1.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc     -o CMakeFiles/cmTC_8cab1.dir/CheckIncludeFile.c.o   -c /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: 'syscall.h' file not found
+#include <syscall.h>
+         ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_8cab1.dir/CheckIncludeFile.c.o] Error 1
+make: *** [cmTC_8cab1/fast] Error 2
+
+
+Determining if the include file ucontext.h exists failed with the following output:
+Change Dir: /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_58da0/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_58da0.dir/build.make CMakeFiles/cmTC_58da0.dir/build
+Building C object CMakeFiles/cmTC_58da0.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc     -o CMakeFiles/cmTC_58da0.dir/CheckIncludeFile.c.o   -c /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+In file included from /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:
+/usr/include/ucontext.h:43:2: error: The deprecated ucontext routines require _XOPEN_SOURCE to be defined
+#error The deprecated ucontext routines require _XOPEN_SOURCE to be defined
+ ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_58da0.dir/CheckIncludeFile.c.o] Error 1
+make: *** [cmTC_58da0/fast] Error 2
+
+
+Determining if the include file ext/slist exists failed with the following output:
+Change Dir: /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_777b5/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_777b5.dir/build.make CMakeFiles/cmTC_777b5.dir/build
+Building CXX object CMakeFiles/cmTC_777b5.dir/CheckIncludeFile.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -std=c++11 -Wno-deprecated-register    -o CMakeFiles/cmTC_777b5.dir/CheckIncludeFile.cxx.o -c /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx:1:10: fatal error: 'ext/slist' file not found
+#include <ext/slist>
+         ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_777b5.dir/CheckIncludeFile.cxx.o] Error 1
+make: *** [cmTC_777b5/fast] Error 2
+
+
+Determining if the include file tr1/unordered_map exists failed with the following output:
+Change Dir: /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bee93/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_bee93.dir/build.make CMakeFiles/cmTC_bee93.dir/build
+Building CXX object CMakeFiles/cmTC_bee93.dir/CheckIncludeFile.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -std=c++11 -Wno-deprecated-register    -o CMakeFiles/cmTC_bee93.dir/CheckIncludeFile.cxx.o -c /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx:1:10: fatal error: 'tr1/unordered_map' file not found
+#include <tr1/unordered_map>
+         ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_bee93.dir/CheckIncludeFile.cxx.o] Error 1
+make: *** [cmTC_bee93/fast] Error 2
+
+
+Determining if the include file tr1/unordered_set exists failed with the following output:
+Change Dir: /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b4d26/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_b4d26.dir/build.make CMakeFiles/cmTC_b4d26.dir/build
+Building CXX object CMakeFiles/cmTC_b4d26.dir/CheckIncludeFile.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -std=c++11 -Wno-deprecated-register    -o CMakeFiles/cmTC_b4d26.dir/CheckIncludeFile.cxx.o -c /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx:1:10: fatal error: 'tr1/unordered_set' file not found
+#include <tr1/unordered_set>
+         ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_b4d26.dir/CheckIncludeFile.cxx.o] Error 1
+make: *** [cmTC_b4d26/fast] Error 2
+
+
+Determining size of unsigned __int16 failed with the following output:
+Change Dir: /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e76a2/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e76a2.dir/build.make CMakeFiles/cmTC_e76a2.dir/build
+Building C object CMakeFiles/cmTC_e76a2.dir/HAVE___UINT16.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc     -o CMakeFiles/cmTC_e76a2.dir/HAVE___UINT16.c.o   -c /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:19:12: error: expected ')'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:19:12: note: to match this '('
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:20:12: error: expected ')'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:20:12: note: to match this '('
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:21:12: error: expected ')'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:21:12: note: to match this '('
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:22:12: error: expected ')'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:22:12: note: to match this '('
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:23:12: error: expected ')'
+  ('0' +  (SIZE    % 10)),
+           ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:23:12: note: to match this '('
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:17:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_e76a2.dir/HAVE___UINT16.c.o] Error 1
+make: *** [cmTC_e76a2/fast] Error 2
+
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CheckTypeSize/HAVE___UINT16.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(unsigned __int16))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining if the function get_static_proc_name exists in the unwind failed with the following output:
+Change Dir: /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2f196/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2f196.dir/build.make CMakeFiles/cmTC_2f196.dir/build
+Building C object CMakeFiles/cmTC_2f196.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=get_static_proc_name   -o CMakeFiles/cmTC_2f196.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.7.2/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_2f196
+/usr/local/Cellar/cmake/3.7.2/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f196.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=get_static_proc_name -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_2f196.dir/CheckFunctionExists.c.o  -o cmTC_2f196  -lunwind 
+ld: library not found for -lunwind
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [cmTC_2f196] Error 1
+make: *** [cmTC_2f196/fast] Error 2
+
+
+Performing C SOURCE FILE Test HAVE___DECLSPEC failed with the following output:
+Change Dir: /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b3bf4/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_b3bf4.dir/build.make CMakeFiles/cmTC_b3bf4.dir/build
+Building C object CMakeFiles/cmTC_b3bf4.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -DHAVE___DECLSPEC   -o CMakeFiles/cmTC_b3bf4.dir/src.c.o   -c /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/src.c
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/src.c:2:27: error: parameter named 'a' is missing
+__declspec(selectany) int a;
+                          ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/src.c:3:5: error: parameter named 'main' is missing
+int main(void) { return 0; }
+    ^
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/src.c:3:15: error: expected ';' at end of declaration
+int main(void) { return 0; }
+              ^
+              ;
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/src.c:2:1: warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+__declspec(selectany) int a;
+^
+1 warning and 3 errors generated.
+make[1]: *** [CMakeFiles/cmTC_b3bf4.dir/src.c.o] Error 1
+make: *** [cmTC_b3bf4/fast] Error 2
+
+Source file was:
+
+__declspec(selectany) int a;
+int main(void) { return 0; }
+
+Performing C++ SOURCE FILE Test STL_NO_NAMESPACE failed with the following output:
+Change Dir: /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5ff23/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5ff23.dir/build.make CMakeFiles/cmTC_5ff23.dir/build
+Building CXX object CMakeFiles/cmTC_5ff23.dir/src.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -std=c++11 -Wno-deprecated-register -DSTL_NO_NAMESPACE   -o CMakeFiles/cmTC_5ff23.dir/src.cxx.o -c /Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/src.cxx
+/Users/nbenavi/Developer/CS348B/pbrt-v3/bin/CMakeFiles/CMakeTmp/src.cxx:3:1: error: no template named 'vector'; did you mean 'std::vector'?
+vector<int> t; int main() { }
+^~~~~~
+std::vector
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/vector:457:29: note: 'std::vector' declared here
+class _LIBCPP_TYPE_VIS_ONLY vector
+                            ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_5ff23.dir/src.cxx.o] Error 1
+make: *** [cmTC_5ff23/fast] Error 2
+
+Source file was:
+
+#include <vector>
+vector<int> t; int main() { }
+
