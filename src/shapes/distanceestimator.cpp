@@ -81,110 +81,51 @@ bool DistanceEstimator::Intersect(const Ray &r, Float *tHit, SurfaceInteraction 
     float evalDistance = Evaluate(ray.o);
 
 
-    std::cout << "this is radius" << std::endl;
-    std::cout << radius << std::endl;
-    std::cout << "this is max iters" << std::endl;
-    std::cout << maxiters << std::endl;
 
 
-    // Compute quadratic sphere coefficients
+    // distance estimator main algorithm
+    float timeStep = 0;
+    float distance;
+    int iters = 0;
+    Point3f rayPoint = ray.o;
+    Point3f intersectionPoint;
+    while (timeStep < ray.tMax && iters < maxiters){
+       distance = Evaluate(rayPoint);
+       
 
-    // Initialize _EFloat_ ray coordinate values
-    EFloat ox(ray.o.x, oErr.x), oy(ray.o.y, oErr.y), oz(ray.o.z, oErr.z);
-    EFloat dx(ray.d.x, dErr.x), dy(ray.d.y, dErr.y), dz(ray.d.z, dErr.z);
-    EFloat a = dx * dx + dy * dy + dz * dz;
-    EFloat b = 2 * (dx * ox + dy * oy + dz * oz);
-    EFloat c = ox * ox + oy * oy + oz * oz - EFloat(radius) * EFloat(radius);
+       if (distance < hitEpsilon){
+            *tHit = (Float)timeStep;
+            intersectionPoint = rayPoint;
+            Normal3f dndu = Normal3f(0,0,0);
+            Normal3f dndv = Normal3f(0,0,0);
+            
 
-    // Solve quadratic equation for _t_ values
-    EFloat t0, t1;
-    if (!Quadratic(a, b, c, &t0, &t1)) return false;
+            Vector3f surfaceNormal  = CalculateNormal(intersectionPoint, normalEpsilon, -ray.d);
+            Vector3f pError         = Vector3f(hitEpsilon * rayEpsilonMultiplier, hitEpsilon * rayEpsilonMultiplier, hitEpsilon * rayEpsilonMultiplier);
 
-    // Check quadric shape _t0_ and _t1_ for nearest intersection
-    if (t0.UpperBound() > ray.tMax || t1.LowerBound() <= 0) return false;
-    EFloat tShapeHit = t0;
-    if (tShapeHit.LowerBound() <= 0) {
-        tShapeHit = t1;
-        if (tShapeHit.UpperBound() > ray.tMax) return false;
-    }
+            Vector3f dpdu, dpdv; 
+            if (std::abs(surfaceNormal.x) > std::abs(surfaceNormal.y)){
+                dpdu = Vector3f(-surfaceNormal.z, 0, surfaceNormal.x) / std::sqrt(surfaceNormal.x * surfaceNormal.x + surfaceNormal.z * surfaceNormal.z);
+            } else {
+                dpdu = Vector3f(0, surfaceNormal.z, -surfaceNormal.y) / std::sqrt(surfaceNormal.y * surfaceNormal.y + surfaceNormal.z * surfaceNormal.z);
+            }
 
-    // Compute sphere hit position and $\phi$
-    pHit = ray((Float)tShapeHit);
-
-    // Refine sphere intersection point
-    pHit *= radius / Distance(pHit, Point3f(0, 0, 0));
-    if (pHit.x == 0 && pHit.y == 0) pHit.x = 1e-5f * radius;
-    phi = std::atan2(pHit.y, pHit.x);
-    if (phi < 0) phi += 2 * Pi;
-
-    // Test sphere intersection against clipping parameters
-    if ((zMin > -radius && pHit.z < zMin) || (zMax < radius && pHit.z > zMax) ||
-        phi > phiMax) {
-        if (tShapeHit == t1) return false;
-        if (t1.UpperBound() > ray.tMax) return false;
-        tShapeHit = t1;
-        // Compute sphere hit position and $\phi$
-        pHit = ray((Float)tShapeHit);
-
-        // Refine sphere intersection point
-        pHit *= radius / Distance(pHit, Point3f(0, 0, 0));
-        if (pHit.x == 0 && pHit.y == 0) pHit.x = 1e-5f * radius;
-        phi = std::atan2(pHit.y, pHit.x);
-        if (phi < 0) phi += 2 * Pi;
-        if ((zMin > -radius && pHit.z < zMin) ||
-            (zMax < radius && pHit.z > zMax) || phi > phiMax)
-            return false;
-    }
-
-    // Find parametric representation of sphere hit
-    Float u = phi / phiMax;
-    Float theta = std::acos(Clamp(pHit.z / radius, -1, 1));
-    Float v = (theta - thetaMin) / (thetaMax - thetaMin);
-
-    // Compute sphere $\dpdu$ and $\dpdv$
-    Float zRadius = std::sqrt(pHit.x * pHit.x + pHit.y * pHit.y);
-    Float invZRadius = 1 / zRadius;
-    Float cosPhi = pHit.x * invZRadius;
-    Float sinPhi = pHit.y * invZRadius;
-    Vector3f dpdu(-phiMax * pHit.y, phiMax * pHit.x, 0);
-    Vector3f dpdv =
-        (thetaMax - thetaMin) *
-        Vector3f(pHit.z * cosPhi, pHit.z * sinPhi, -radius * std::sin(theta));
-
-    // Compute sphere $\dndu$ and $\dndv$
-    Vector3f d2Pduu = -phiMax * phiMax * Vector3f(pHit.x, pHit.y, 0);
-    Vector3f d2Pduv =
-        (thetaMax - thetaMin) * pHit.z * phiMax * Vector3f(-sinPhi, cosPhi, 0.);
-    Vector3f d2Pdvv = -(thetaMax - thetaMin) * (thetaMax - thetaMin) *
-                      Vector3f(pHit.x, pHit.y, pHit.z);
-
-    // Compute coefficients for fundamental forms
-    Float E = Dot(dpdu, dpdu);
-    Float F = Dot(dpdu, dpdv);
-    Float G = Dot(dpdv, dpdv);
-    Vector3f N = Normalize(Cross(dpdu, dpdv));
-    Float e = Dot(N, d2Pduu);
-    Float f = Dot(N, d2Pduv);
-    Float g = Dot(N, d2Pdvv);
-
-    // Compute $\dndu$ and $\dndv$ from fundamental form coefficients
-    Float invEGF2 = 1 / (E * G - F * F);
-    Normal3f dndu = Normal3f((f * F - e * G) * invEGF2 * dpdu +
-                             (e * F - f * E) * invEGF2 * dpdv);
-    Normal3f dndv = Normal3f((g * F - f * G) * invEGF2 * dpdu +
-                             (f * F - g * E) * invEGF2 * dpdv);
-
-    // Compute error bounds for sphere intersection
-    Vector3f pError = gamma(5) * Abs((Vector3f)pHit);
-
-    // Initialize _SurfaceInteraction_ from parametric information
-    *isect = (*ObjectToWorld)(SurfaceInteraction(pHit, pError, Point2f(u, v),
+           dpdv = Cross(surfaceNormal, dpdu);
+            *isect = (*ObjectToWorld)(SurfaceInteraction(intersectionPoint, pError, Point2f(0, 0),
                                                  -ray.d, dpdu, dpdv, dndu, dndv,
                                                  ray.time, this));
+            return true;
+       
 
-    // Update _tHit_ for quadric intersection
-    *tHit = (Float)tShapeHit;
-    return true;
+       }
+
+       timeStep +=  distance/ray.d.Length();
+       rayPoint = ray.o + ray.d * timeStep;
+       iters++;
+    }
+
+    return false;
+    
 }
 
 Float DistanceEstimator::Area() const { return phiMax * radius * (zMax - zMin); }
