@@ -35,8 +35,8 @@
 #pragma once
 #endif
 
-#ifndef PBRT_SHAPES_SPHEREDE_H
-#define PBRT_SHAPES_SPHEREDE_H
+#ifndef PBRT_SHAPES_MANDELBULBDE_H
+#define PBRT_SHAPES_MANDELBULBDE_H
 
 // shapes/sphere.h*
 #include "shape.h"
@@ -49,18 +49,21 @@ class MandelbulbDE : public DistanceEstimator {
   public:
     // Sphere Public Methods
     MandelbulbDE(const Transform *ObjectToWorld, const Transform *WorldToObject,
-           bool reverseOrientation, Float radius, int maxiters, float hitEpsilon, int rayEpsilonMultiplier, float normalEpsilon)
+           bool reverseOrientation,  int mandelbulbPower, int fractalIters, int maxiters, float hitEpsilon, int rayEpsilonMultiplier, float normalEpsilon)
         : DistanceEstimator(ObjectToWorld, WorldToObject, reverseOrientation,maxiters, hitEpsilon, rayEpsilonMultiplier, normalEpsilon),
-          radius(radius){}
+          mandelbulbPower(mandelbulbPower),
+          fractalIters(fractalIters){}
 
     Bounds3f ObjectBound() const;
     Float Area() const;
     Interaction Sample(const Point2f &u, Float *pdf) const;
     Float Evaluate(const Point3f& p) const;
 
+
   private:
+    int mandelbulbPower; 
+    int fractalIters;
     // Sphere Private Data
-    const Float radius;
     // important for generic Distance Estimator
     // int maxiters; // Number of steps along the ray until we give up (default 1000)
     // float hitEpsilon; // how close to the surface we must be before we say we "hit" it

@@ -32,7 +32,7 @@
 
 
 // shapes/sphere.cpp*
-#include "shapes/spherede.h"
+#include "shapes/mandelbulbde.h"
 #include "sampling.h"
 #include "paramset.h"
 #include "efloat.h"
@@ -41,42 +41,65 @@
 namespace pbrt {
 
 // Sphere Method Definitions
-Bounds3f SphereDE::ObjectBound() const {
-    return Bounds3f(Point3f(-radius, -radius, -radius),
-                    Point3f(radius, radius, radius));
+Bounds3f MandelbulbDE::ObjectBound() const {
+    return Bounds3f(Point3f(-1.0, -1.0, -1.0),
+                    Point3f(1.0, 1.0, 1.0));
 }
 
 
 
-Float SphereDE::Evaluate(const Point3f& p) const{
+Float MandelbulbDE::Evaluate(const Point3f &p) const {
+    const float bailout = 2.0f;
+    const float Power = (float)mandelbulbPower;
+    Point3f z = p;
+    float dr = 1.0;
+    float r = 0.0;
+    for (int i = 0; i < fractalIters; i++) {
+        r = (z-Point3f(0,0,0)).Length();
+        if (r>bailout) break;
 
-    return std::sqrt(p.x * p.x + p.y * p.y + p.z * p.z) - radius;
+        // convert to polar coordinates
+        float theta = acos(z.z/r);
+        float phi = atan2(z.y,z.x);
+        dr =  pow( r, Power-1.0)*Power*dr + 1.0;
+
+        // scale and rotate the point
+        float zr = pow( r,Power);
+        theta = theta*Power;
+        phi = phi*Power;
+
+        // convert back to cartesian coordinates
+        z = zr*Point3f(sin(theta)*cos(phi), sin(phi)*sin(theta), cos(theta));
+        z += p;
+    }
+    return 0.5*log(r)*r/dr;
 }
 
+// bool MandelbulbDE::IntersectP(const Ray &r, bool testAlphaTexture) const {
+//     return false;
+// }
 
+Float MandelbulbDE::Area() const { return 1000000; }
 
-Float SphereDE::Area() const { return 360 * radius * (2 * radius); }
-
-Interaction SphereDE::Sample(const Point2f &u, Float *pdf) const {
+Interaction MandelbulbDE::Sample(const Point2f &u, Float *pdf) const {
     LOG(FATAL) << "Cone::Sample not implemented.";
     return Interaction();
 }
 
 
 
-std::shared_ptr<Shape> CreateSphereDEShape(const Transform *o2w,
+std::shared_ptr<Shape> CreateMandelbulbDEShape(const Transform *o2w,
                                          const Transform *w2o,
                                          bool reverseOrientation,
                                          const ParamSet &params) {
-    Float radius = params.FindOneFloat("radius", 1.f);
+    int mandelbulbPower = params.FindOneInt("mandelbulbPower", 8);
+    int fractalIters = params.FindOneInt("fractalIters", 1000);
     int maxiters = params.FindOneInt("maxiters", 1000);
-    float hitEpsilon = params.FindOneFloat("hitEpsilon", 0.0001f);
+    float hitEpsilon = params.FindOneFloat("hitEpsilon", 0.00001f);
     float rayEpsilonMultiplier = params.FindOneInt("rayEpsilonMultiplier", 10);
-    float normalEpsilon = params.FindOneFloat("normalEpsilon",0.0001f);
+    float normalEpsilon = params.FindOneFloat("normalEpsilon",0.00001f);
 
-
-
-    return std::make_shared<SphereDE>(o2w, w2o, reverseOrientation, radius, maxiters, hitEpsilon, rayEpsilonMultiplier, normalEpsilon);
+    return std::make_shared<MandelbulbDE>(o2w, w2o, reverseOrientation, mandelbulbPower, fractalIters, maxiters, hitEpsilon, rayEpsilonMultiplier, normalEpsilon);
 }
 
 }  // namespace pbrt

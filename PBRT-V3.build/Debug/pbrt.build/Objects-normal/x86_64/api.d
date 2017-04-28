@@ -98,6 +98,8 @@ dependencies: /Users/nbenavi/Developer/CS348B/pbrt-v3/src/core/api.cpp \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/shapes/plymesh.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/shapes/distanceestimator.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/shapes/spherede.h \
+  /Users/nbenavi/Developer/CS348B/pbrt-v3/src/shapes/infinitespherede.h \
+  /Users/nbenavi/Developer/CS348B/pbrt-v3/src/shapes/mandelbulbde.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/textures/bilerp.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/textures/checkerboard.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/textures/constant.h \

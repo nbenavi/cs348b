@@ -86,7 +86,11 @@ bool DistanceEstimator::Intersect(const Ray &r, Float *tHit, SurfaceInteraction 
        
 
        if (distance < hitEpsilon){
-            *tHit = (Float)timeStep;
+            
+            if(tHit){
+              *tHit = (Float)timeStep;
+            }
+            
             intersectionPoint = rayPoint;
             Normal3f dndu = Normal3f(0,0,0);
             Normal3f dndv = Normal3f(0,0,0);
@@ -103,16 +107,20 @@ bool DistanceEstimator::Intersect(const Ray &r, Float *tHit, SurfaceInteraction 
             }
 
            dpdv = Cross(surfaceNormal, dpdu);
+           
+           if(isect){
             *isect = (*ObjectToWorld)(SurfaceInteraction(intersectionPoint, pError, Point2f(0, 0),
                                                  -ray.d, dpdu, dpdv, dndu, dndv,
                                                  ray.time, this));
+           }
             return true;
        
 
        }
 
-       timeStep +=  distance/ray.d.Length();
+       timeStep +=  (distance / ray.d.Length());
        rayPoint = ray.o + ray.d * timeStep;
+       ray.time = timeStep;
        iters++;
     }
 
@@ -120,25 +128,6 @@ bool DistanceEstimator::Intersect(const Ray &r, Float *tHit, SurfaceInteraction 
     
 }
 
-// Float DistanceEstimator::Area() const { return 0;}
 
-// Interaction DistanceEstimator::Sample(const Point2f &u, Float *pdf) const {
-//     LOG(FATAL) << "Cone::Sample not implemented.";
-//     return Interaction();
-// }
-
-
-
-// std::shared_ptr<Shape> CreateDistanceEstimatorShape(const Transform *o2w,
-//                                          const Transform *w2o,
-//                                          bool reverseOrientation,
-//                                          const ParamSet &params) {
-//     int maxiters = params.FindOneInt("maxiters", 1000);
-//     float hitEpsilon = params.FindOneFloat("hitEpsilon", 0.0001f);
-//     float rayEpsilonMultiplier = params.FindOneInt("rayEpsilonMultiplier", 10);
-//     float normalEpsilon = params.FindOneFloat("normalEpsilon",0.0001f);
-    
-//     return std::make_shared<DistanceEstimator>(o2w, w2o, reverseOrientation, maxiters, hitEpsilon, rayEpsilonMultiplier, normalEpsilon);
-// }
 
 }  // namespace pbrt
