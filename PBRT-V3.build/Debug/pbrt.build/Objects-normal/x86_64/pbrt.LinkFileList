@@ -51,7 +51,7 @@
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/gaussian.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/mitchell.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/sinc.o
-/Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/triangle-F7448C80D12D3B54.o
+/Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/triangle-8BDCDDBB2C7B50A5.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/bdpt.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/directlighting.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/mlt.o
@@ -99,7 +99,8 @@
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/paraboloid.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/plymesh.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/sphere.o
-/Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/triangle-EF0690A070CEE37A.o
+/Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/spherede.o
+/Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/triangle-1041CC9879D15F8A.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/bilerp.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/checkerboard.o
 /Users/nbenavi/Developer/CS348B/pbrt-v3/PBRT-V3.build/Debug/pbrt.build/Objects-normal/x86_64/constant.o

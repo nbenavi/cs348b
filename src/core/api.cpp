@@ -98,6 +98,7 @@
 #include "shapes/triangle.h"
 #include "shapes/plymesh.h"
 #include "shapes/distanceestimator.h"
+#include "shapes/spherede.h"
 #include "textures/bilerp.h"
 #include "textures/checkerboard.h"
 #include "textures/constant.h"
@@ -304,9 +305,12 @@ std::vector<std::shared_ptr<Shape>> MakeShapes(const std::string &name,
         s = CreateSphereShape(object2world, world2object, reverseOrientation,
                               paramSet);
     // Create remaining single _Shape_ types
-    else if (name == "distanceestimator")
-        s = CreateDistanceEstimatorShape(object2world, world2object, reverseOrientation,
-                              paramSet);
+//    else if (name == "distanceestimator")
+//        s = CreateDistanceEstimatorShape(object2world, world2object, reverseOrientation,
+//                              paramSet);
+     else if (name == "spherede")
+         s = CreateSphereDEShape(object2world, world2object, reverseOrientation,
+                               paramSet);
     else if (name == "cylinder")
         s = CreateCylinderShape(object2world, world2object, reverseOrientation,
                                 paramSet);
