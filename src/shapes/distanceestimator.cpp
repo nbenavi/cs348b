@@ -42,8 +42,8 @@ namespace pbrt {
 
 // Sphere Method Definitions
 Bounds3f DistanceEstimator::ObjectBound() const {
-    return Bounds3f(Point3f(-radius, -radius, zMin),
-                    Point3f(radius, radius, zMax));
+    return Bounds3f(Point3f(-radius, -radius, -radius),
+                    Point3f(radius, radius, radius));
 }
 
 Vector3f DistanceEstimator::CalculateNormal(const Point3f& pos, float eps, 
@@ -128,7 +128,7 @@ bool DistanceEstimator::Intersect(const Ray &r, Float *tHit, SurfaceInteraction 
     
 }
 
-Float DistanceEstimator::Area() const { return phiMax * radius * (zMax - zMin); }
+Float DistanceEstimator::Area() const { return 360 * radius * (2 * radius); }
 
 Interaction DistanceEstimator::Sample(const Point2f &u, Float *pdf) const {
     LOG(FATAL) << "Cone::Sample not implemented.";
@@ -143,14 +143,13 @@ std::shared_ptr<Shape> CreateDistanceEstimatorShape(const Transform *o2w,
                                          const ParamSet &params) {
     Float radius = params.FindOneFloat("radius", 1.f);
     int maxiters = params.FindOneInt("maxiters", 1000);
-    Float zmin = params.FindOneFloat("zmin", -radius);
-    Float zmax = params.FindOneFloat("zmax", radius);
-    Float phimax = params.FindOneFloat("phimax", 360.f);
+    float hitEpsilon = params.FindOneFloat("hitEpsilon", 0.0001f);
+    float rayEpsilonMultiplier = params.FindOneInt("rayEpsilonMultiplier", 10);
+    float normalEpsilon = params.FindOneFloat("normalEpsilon",0.0001f);
 
 
 
-    return std::make_shared<DistanceEstimator>(o2w, w2o, reverseOrientation, radius, maxiters, zmin,
-                                    zmax, phimax);
+    return std::make_shared<DistanceEstimator>(o2w, w2o, reverseOrientation, radius, maxiters, hitEpsilon, rayEpsilonMultiplier, normalEpsilon);
 }
 
 }  // namespace pbrt

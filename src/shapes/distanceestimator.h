@@ -48,16 +48,14 @@ class DistanceEstimator : public Shape {
   public:
     // Sphere Public Methods
     DistanceEstimator(const Transform *ObjectToWorld, const Transform *WorldToObject,
-           bool reverseOrientation, Float radius, int maxiters, Float zMin, Float zMax,
-           Float phiMax)
+           bool reverseOrientation, Float radius, int maxiters, float hitEpsilon, int rayEpsilonMultiplier, float normalEpsilon)
         : Shape(ObjectToWorld, WorldToObject, reverseOrientation),
           radius(radius),
           maxiters(maxiters),
-          zMin(Clamp(std::min(zMin, zMax), -radius, radius)),
-          zMax(Clamp(std::max(zMin, zMax), -radius, radius)),
-          thetaMin(std::acos(Clamp(std::min(zMin, zMax) / radius, -1, 1))),
-          thetaMax(std::acos(Clamp(std::max(zMin, zMax) / radius, -1, 1))),
-          phiMax(Radians(Clamp(phiMax, 0, 360))) {}
+          hitEpsilon(hitEpsilon),
+          rayEpsilonMultiplier(rayEpsilonMultiplier),
+          normalEpsilon(normalEpsilon){}
+          
     Bounds3f ObjectBound() const;
     bool Intersect(const Ray &ray, Float *tHit, SurfaceInteraction *isect,
                    bool testAlphaTexture) const;
@@ -72,11 +70,9 @@ const Vector3f& defaultNormal) const;
     const Float radius;
     // important for generic Distance Estimator
     int maxiters; // Number of steps along the ray until we give up (default 1000)
-    float hitEpsilon = 0.0001f; // how close to the surface we must be before we say we "hit" it
-    float rayEpsilonMultiplier = 10; // how much we multiply hitEpsilon by to get pError
-    float normalEpsilon = 0.0001f; // The epsilon we send to CalculateNormal()
-    const Float zMin, zMax;
-    const Float thetaMin, thetaMax, phiMax;
+    float hitEpsilon; // how close to the surface we must be before we say we "hit" it
+    float rayEpsilonMultiplier; // how much we multiply hitEpsilon by to get pError
+    float normalEpsilon; // The epsilon we send to CalculateNormal()
 
 
 };
