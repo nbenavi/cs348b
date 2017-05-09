@@ -38,6 +38,7 @@ dependencies: /Users/nbenavi/Developer/CS348B/pbrt-v3/src/core/api.cpp \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/cameras/orthographic.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/cameras/perspective.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/cameras/realistic.h \
+  /Users/nbenavi/Developer/CS348B/pbrt-v3/src/cameras/lightfield.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/filters/box.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/filters/gaussian.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/filters/mitchell.h \
@@ -100,6 +101,7 @@ dependencies: /Users/nbenavi/Developer/CS348B/pbrt-v3/src/core/api.cpp \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/shapes/spherede.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/shapes/infinitespherede.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/shapes/mandelbulbde.h \
+  /Users/nbenavi/Developer/CS348B/pbrt-v3/src/shapes/customde.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/textures/bilerp.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/textures/checkerboard.h \
   /Users/nbenavi/Developer/CS348B/pbrt-v3/src/textures/constant.h \

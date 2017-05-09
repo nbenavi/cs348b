@@ -47,6 +47,7 @@
 #include "cameras/orthographic.h"
 #include "cameras/perspective.h"
 #include "cameras/realistic.h"
+#include "cameras/lightfield.h"
 #include "filters/box.h"
 #include "filters/gaussian.h"
 #include "filters/mitchell.h"
@@ -101,6 +102,7 @@
 #include "shapes/spherede.h"
 #include "shapes/infinitespherede.h"
 #include "shapes/mandelbulbde.h"
+#include "shapes/customde.h"
 #include "textures/bilerp.h"
 #include "textures/checkerboard.h"
 #include "textures/constant.h"
@@ -316,6 +318,9 @@ std::vector<std::shared_ptr<Shape>> MakeShapes(const std::string &name,
      // infinitespheregridde
      else if (name == "infinitespheregridde")
          s = CreateInfiniteSphereDEShape(object2world, world2object, reverseOrientation,
+                               paramSet);
+     else if (name == "customde")
+         s = CreateCustomDEShape(object2world, world2object, reverseOrientation,
                                paramSet);
     else if (name == "cylinder")
         s = CreateCylinderShape(object2world, world2object, reverseOrientation,
@@ -676,7 +681,10 @@ Camera *MakeCamera(const std::string &name, const ParamSet &paramSet,
         camera = CreateOrthographicCamera(paramSet, animatedCam2World, film,
                                           mediumInterface.outside);
     else if (name == "realistic")
-        camera = CreateRealisticCamera(paramSet, animatedCam2World, film,
+        camera = CreateLightFieldCamera(paramSet, animatedCam2World, film,
+                                       mediumInterface.outside);
+    else if (name == "lightfield")
+        camera = CreateLightFieldCamera(paramSet, animatedCam2World, film,
                                        mediumInterface.outside);
     else if (name == "environment")
         camera = CreateEnvironmentCamera(paramSet, animatedCam2World, film,

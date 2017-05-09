@@ -79,7 +79,7 @@ Float MandelbulbDE::Evaluate(const Point3f &p) const {
 //     return false;
 // }
 
-Float MandelbulbDE::Area() const { return 1000000; }
+Float MandelbulbDE::Area() const { return std::numeric_limits<float>::max(); }
 
 Interaction MandelbulbDE::Sample(const Point2f &u, Float *pdf) const {
     LOG(FATAL) << "Cone::Sample not implemented.";

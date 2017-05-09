@@ -77,9 +77,9 @@ std::shared_ptr<Shape> CreateInfiniteSphereDEShape(const Transform *o2w,
     Float radius = params.FindOneFloat("radius", 1.f);
     Float cellSize = params.FindOneFloat("cellSize", 6.f);
     int maxiters = params.FindOneInt("maxiters", 1000);
-    float hitEpsilon = params.FindOneFloat("hitEpsilon", 0.001f);
+    float hitEpsilon = params.FindOneFloat("hitEpsilon", 0.0001f);
     float rayEpsilonMultiplier = params.FindOneInt("rayEpsilonMultiplier", 10);
-    float normalEpsilon = params.FindOneFloat("normalEpsilon",0.001f);
+    float normalEpsilon = params.FindOneFloat("normalEpsilon",0.05f);
 
 
 
