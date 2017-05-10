@@ -48,22 +48,70 @@ LightFieldCamera::LightFieldCamera(const AnimatedTransform &CameraToWorld,
                                      Float lensRadius, Float focalDistance,
                                      Float fov, Film *film,
                                      const Medium *medium)
-    : Camera(CameraToWorld, shutterOpen, shutterClose, film, medium){
-     
+    : Camera(CameraToWorld, shutterOpen, shutterClose, film, medium),fov(fov){
      camera = new PerspectiveCamera(CameraToWorld, screenWindow, shutterOpen, shutterClose,
                                  lensRadius, focalDistance, fov, film, medium);
 }
 
 Float LightFieldCamera::GenerateRay(const CameraSample &sample,
                                      Ray *ray) const {
+  
+    ProfilePhase prof(Prof::GenerateCameraRay);
+    // Compute environment camera ray direction
+
+    // Point3f pFilm = Point3f(sample.pFilm.x, sample.pFilm.y, 0);
+    // Point3f pCamera = RasterToCamera(pFilm);
+    // *ray = Ray(Point3f(0, 0, 0), Normalize(Vector3f(pCamera)));
+    // ray->time = Lerp(sample.time, shutterOpen, shutterClose);
+    // ray->medium = medium;
+    // *ray = CameraToWorld(*ray);
+    // return 1;
+    // std::cout << sample.pFilm.x << std::endl;
+
+    int numPerRow = 2;
+
+    float fovScale = std::tan(fov/2 * 3.1459 / 180) * 2;
+
+    float y = 0;
+    float x = 0;
+
+
+    x = 2 * fovScale * sample.pFilm.x / film->fullResolution.x - fovScale;
+    y = fovScale - 2 * fovScale * sample.pFilm.y / film->fullResolution.y;
+
+    if(sample.pFilm.x < film->fullResolution.x/2){
+        x = x + fovScale/2;
+
+    }else {
+        x = x + fovScale/2 - fovScale;
+
+    }
+
     
-    return camera->GenerateRay(sample, ray);
+    if(sample.pFilm.y < film->fullResolution.y/2){
+        y = y - fovScale/2;
+
+    }else {
+        y = y - fovScale/2 + fovScale;
+    }  
+ 
+
+    
+
+    Vector3f dir(x,y,1);
+    
+    *ray = Ray(Point3f(0, 0, 0), Normalize(dir));
+    ray->time = Lerp(sample.time, shutterOpen, shutterClose);
+    ray->medium = medium;
+    *ray = CameraToWorld(*ray);
+    return 1;
+
 }
 
-Float LightFieldCamera::GenerateRayDifferential(const CameraSample &sample,
-                                                 RayDifferential *ray) const {
-    return camera->GenerateRayDifferential(sample, ray);
-}
+// Float LightFieldCamera::GenerateRayDifferential(const CameraSample &sample,
+//                                                  RayDifferential *ray) const {
+//     return camera->GenerateRayDifferential(sample, ray);
+// }
 
 LightFieldCamera *CreateLightFieldCamera(const ParamSet &params,
                                            const AnimatedTransform &cam2world,
@@ -81,6 +129,7 @@ LightFieldCamera *CreateLightFieldCamera(const ParamSet &params,
     Float frame = params.FindOneFloat(
         "frameaspectratio",
         Float(film->fullResolution.x) / Float(film->fullResolution.y));
+  
     Bounds2f screen;
     if (frame > 1.f) {
         screen.pMin.x = -frame;
@@ -104,11 +153,22 @@ LightFieldCamera *CreateLightFieldCamera(const ParamSet &params,
         } else
             Error("\"screenwindow\" should have four values");
     }
+    
+    std::cout << "screen params" << std::endl;
+    std::cout << screen.pMin.x << std::endl;
+    std::cout << screen.pMin.y << std::endl;
+    std::cout << screen.pMax.x << std::endl;
+    std::cout << "resolution" << std::endl;
+    std::cout << film->fullResolution.y << std::endl;
+ 
+
+
     Float fov = params.FindOneFloat("fov", 90.);
     Float halffov = params.FindOneFloat("halffov", -1.f);
     if (halffov > 0.f)
         // hack for structure synth, which exports half of the full fov
         fov = 2.f * halffov;
+
 
 
     return new LightFieldCamera(cam2world, screen, shutteropen, shutterclose,

@@ -55,12 +55,13 @@ class LightFieldCamera : public Camera {
                       Float shutterClose, Float lensRadius, Float focalDistance,
                       Float fov, Film *film, const Medium *medium);
     Float GenerateRay(const CameraSample &sample, Ray *) const;
-    Float GenerateRayDifferential(const CameraSample &sample,
-                                  RayDifferential *ray) const;
+    // Float GenerateRayDifferential(const CameraSample &sample,
+    //                               RayDifferential *ray) const;
 
   private:
     // PerspectiveCamera Private Data
     PerspectiveCamera *camera;
+    Float fov;
 
 };
 
